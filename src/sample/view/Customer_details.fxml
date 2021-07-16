@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="401.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Details_controller">
+   <children>
+      <TableView fx:id="c_table" layoutX="350.0" prefHeight="401.0" prefWidth="357.0" />
+      <AnchorPane prefHeight="401.0" prefWidth="351.0" style="-fx-background-color: #4f83cc;">
+         <children>
+            <JFXButton fx:id="back_btn" layoutX="114.0" layoutY="362.0" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #ffffff;" text="Go Back" />
+            <JFXTextArea layoutX="15.0" layoutY="171.0" prefHeight="59.0" prefWidth="322.0" text="In this section you will find details regarding your customers like ID, Name Phone Number, Address">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextArea>
+            <ImageView fitHeight="59.0" fitWidth="150.0" layoutX="146.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-information-64.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.New_bill_controller">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="227.0" style="-fx-background-color: #4f83cc;">
+         <children>
+            <JFXTextArea layoutX="36.0" layoutY="167.0" prefHeight="78.0" prefWidth="155.0" text="It's that time of the month.... for you to start billing your customers">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextArea>
+            <ImageView fitHeight="61.0" fitWidth="69.0" layoutX="83.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-wink-50.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="227.0" layoutY="113.0" prefHeight="11.0" prefWidth="473.0" style="-fx-background-color: #4f83cc;" />
+      <TextField fx:id="name_field" alignment="CENTER" layoutX="244.0" layoutY="26.0" prefHeight="25.0" prefWidth="440.0" promptText="Enter Name" />
+      <JFXButton fx:id="search_btn" buttonType="RAISED" layoutX="333.0" layoutY="74.0" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: #4f83cc;" text="Search" />
+      <Label layoutX="244.0" layoutY="137.0" prefHeight="25.0" prefWidth="97.0" text="Base Amount: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="baseamt_label" layoutX="367.0" layoutY="140.0" prefHeight="17.0" prefWidth="137.0" text="Amt">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="yes_box" layoutX="359.0" layoutY="184.0" prefHeight="18.0" prefWidth="61.0" text="Yes">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXCheckBox fx:id="no_box" layoutX="449.0" layoutY="184.0" prefHeight="20.0" prefWidth="61.0" text="No">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXCheckBox>
+      <Label layoutX="244.0" layoutY="184.0" prefHeight="20.0" prefWidth="109.0" text="Personal Training">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="228.0" prefHeight="17.0" prefWidth="109.0" text="Special Facilities">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="locker_box" layoutX="359.0" layoutY="228.0" prefHeight="20.0" prefWidth="78.0" text="Locker">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXCheckBox fx:id="shower_box" layoutX="449.0" layoutY="228.0" prefHeight="20.0" prefWidth="78.0" text="Shower">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXCheckBox fx:id="shake_box" layoutX="535.0" layoutY="228.0" prefHeight="20.0" prefWidth="118.0" text="Protien Shake">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXCheckBox fx:id="food_box" layoutX="361.0" layoutY="262.0" prefHeight="20.0" prefWidth="97.0" text="Diet Food">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXCheckBox>
+      <Label layoutX="244.0" layoutY="328.0" prefHeight="20.0" prefWidth="97.0" text="Total Bill">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="total_amt_label" layoutX="361.0" layoutY="328.0" prefHeight="17.0" prefWidth="97.0" text="AMT">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="finalize_btn" buttonType="RAISED" layoutX="334.0" layoutY="295.0" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: #4f83cc;" text="Finalize" />
+      <JFXButton fx:id="bill_c_btn" buttonType="RAISED" layoutX="511.0" layoutY="361.0" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #4f83cc;" text="BILL CUSTOMER" />
+      <JFXButton fx:id="back_btn" buttonType="RAISED" layoutX="244.0" layoutY="361.0" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #4f83cc;" text="GO BACK" />
+   </children>
+</AnchorPane>

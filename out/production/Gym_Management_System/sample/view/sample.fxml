@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #4f83cc;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+   <children>
+      <Label layoutX="107.0" layoutY="61.0" prefHeight="39.0" prefWidth="216.0" text="Welcome to" textFill="#f8f5f5">
+         <font>
+            <Font name="Open Sans" size="34.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Label>
+      <Label layoutX="303.0" layoutY="97.0" prefHeight="49.0" prefWidth="368.0" text="GYM" textFill="#fffefe">
+         <font>
+            <Font name="Open Sans" size="79.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Label>
+      <Label layoutX="303.0" layoutY="193.0" prefHeight="43.0" prefWidth="342.0" text="Management" textFill="#fffbfb">
+         <font>
+            <Font name="Open Sans" size="43.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Label>
+      <Label layoutX="303.0" layoutY="254.0" prefHeight="17.0" prefWidth="263.0" text="System" textFill="#fffbfb">
+         <font>
+            <Font name="Open Sans" size="43.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Label>
+      <ImageView fitHeight="123.0" fitWidth="76.0" layoutX="107.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-fitness-80.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="94.0" fitWidth="86.0" layoutX="203.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-stepper-80.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="86.0" layoutX="91.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-pilates-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="86.0" layoutX="195.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-bench-press-80.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="next_button" buttonType="RAISED" layoutX="219.0" layoutY="354.0" prefHeight="25.0" prefWidth="216.0" text="CLICK TO CONTINUE" textFill="#fffafa" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Sc3_controller">
+   <children>
+      <AnchorPane prefHeight="401.0" prefWidth="227.0" style="-fx-background-color: #4f83cc;">
+         <children>
+            <Label fx:id="welcome_label" alignment="CENTER" layoutX="18.0" layoutY="20.0" prefHeight="43.0" prefWidth="188.0" text="Welcome " textFill="#fff1f1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="name_label" alignment="CENTER" layoutX="20.0" layoutY="42.0" prefHeight="43.0" prefWidth="188.0" text="\@" textFill="#fffafa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea editable="false" layoutX="18.0" layoutY="108.0" prefHeight="185.0" prefWidth="188.0" text="We know what place this gym holds in lives of people and you as the owner or staff member is responsible for maintaining this gym. This is where this app comes in to make that maintainance process easier " unFocusColor="BLACK">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextArea>
+            <JFXTextArea layoutX="18.0" layoutY="309.0" prefHeight="71.0" prefWidth="188.0" text="On the Right side you will find the options to navigate through this app" unFocusColor="BLACK">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextArea>
+         </children>
+      </AnchorPane>
+      <Label fx:id="time_label" alignment="CENTER" layoutX="545.0" layoutY="14.0" prefHeight="33.0" prefWidth="137.0" />
+      <JFXButton fx:id="newstaff_btn" buttonType="RAISED" layoutX="267.0" layoutY="66.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Add New Staff Member" textFill="#0d0d0d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="bill_btn" buttonType="RAISED" layoutX="267.0" layoutY="119.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Bill a Customer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="customer_btn" buttonType="RAISED" layoutX="267.0" layoutY="224.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Add New Customer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="details_btn" buttonType="RAISED" layoutX="267.0" layoutY="169.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Customer Details">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="inventory_btn" buttonType="RAISED" layoutX="267.0" layoutY="281.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Check Inventory">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SignupController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="227.0" style="-fx-background-color: #4f83cc;">
+         <children>
+            <ImageView fitHeight="56.0" fitWidth="150.0" layoutX="86.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-warning-64.png" />
+               </image>
+            </ImageView>
+            <JFXTextArea editable="false" layoutX="12.0" layoutY="165.0" prefHeight="91.0" prefWidth="204.0" text="Creating a new user will give that user full access to the app and its sensitive information.&#10;Proceed with caution.">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextArea>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="id_field" alignment="CENTER" layoutX="246.0" layoutY="21.0" prefHeight="25.0" prefWidth="437.0" promptText="ID" />
+      <TextField fx:id="name_field" alignment="CENTER" layoutX="246.0" layoutY="63.0" prefHeight="25.0" prefWidth="437.0" promptText="Full Name" />
+      <TextField fx:id="address_field" alignment="CENTER" layoutX="246.0" layoutY="111.0" prefHeight="25.0" prefWidth="437.0" promptText="Address (House No, Street,Area)" />
+      <TextField fx:id="aadhaar_field" alignment="CENTER" layoutX="246.0" layoutY="159.0" prefHeight="25.0" prefWidth="437.0" promptText="Aadhaar" />
+      <TextField fx:id="mobile_field" alignment="CENTER" layoutX="246.0" layoutY="201.0" prefHeight="25.0" prefWidth="437.0" promptText="Mobile" />
+      <TextField fx:id="username_field" alignment="CENTER" layoutX="249.0" layoutY="251.0" prefHeight="25.0" prefWidth="437.0" promptText="Username" />
+      <TextField fx:id="password_field" alignment="CENTER" layoutX="246.0" layoutY="297.0" prefHeight="25.0" prefWidth="437.0" promptText="Password" />
+      <JFXButton fx:id="signup_btn" layoutX="316.0" layoutY="354.0" prefHeight="25.0" prefWidth="263.0" style="-fx-background-color: #4f83cc;" text="SIGNUP">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
