@@ -33,27 +33,32 @@
          </children>
       </AnchorPane>
       <Label fx:id="time_label" alignment="CENTER" layoutX="545.0" layoutY="14.0" prefHeight="33.0" prefWidth="137.0" />
-      <JFXButton fx:id="newstaff_btn" buttonType="RAISED" layoutX="267.0" layoutY="66.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Add New Staff Member" textFill="#0d0d0d">
+      <JFXButton fx:id="newstaff_btn" buttonType="RAISED" layoutX="267.0" layoutY="66.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Add New Trainer" textFill="#0d0d0d">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="bill_btn" buttonType="RAISED" layoutX="267.0" layoutY="119.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Bill a Customer">
+      <JFXButton fx:id="bill_btn" buttonType="RAISED" layoutX="267.0" layoutY="119.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Bill a Member">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="customer_btn" buttonType="RAISED" layoutX="267.0" layoutY="224.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Add New Customer">
+      <JFXButton fx:id="customer_btn" buttonType="RAISED" layoutX="267.0" layoutY="224.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Add New Member">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="details_btn" buttonType="RAISED" layoutX="267.0" layoutY="169.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Customer Details">
+      <JFXButton fx:id="details_btn" buttonType="RAISED" layoutX="267.0" layoutY="169.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Member Details">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="inventory_btn" buttonType="RAISED" layoutX="267.0" layoutY="281.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Check Inventory">
+      <JFXButton fx:id="inventory_btn" buttonType="RAISED" layoutX="267.0" layoutY="281.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Machine List">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="attendance_btn" buttonType="RAISED" layoutX="267.0" layoutY="337.0" prefHeight="43.0" prefWidth="407.0" style="-fx-background-color: #4f83cc;" text="Attendance">
          <font>
             <Font size="18.0" />
          </font>

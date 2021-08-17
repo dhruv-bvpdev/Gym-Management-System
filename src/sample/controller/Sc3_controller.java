@@ -50,6 +50,9 @@ public class Sc3_controller {
     private JFXButton inventory_btn;
 
     @FXML
+    private JFXButton attendance_btn;
+
+    @FXML
     void initialize() {
         //set_date();
 
@@ -85,6 +88,13 @@ public class Sc3_controller {
             @Override
             public void handle(ActionEvent event) {
                 bill();
+            }
+        });
+
+        attendance_btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                attendance();
             }
         });
     }
@@ -174,6 +184,21 @@ public class Sc3_controller {
         bill_btn.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/New_bill.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void attendance(){
+        attendance_btn.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/Attendance.fxml"));
         try {
             loader.load();
         } catch (IOException e) {
