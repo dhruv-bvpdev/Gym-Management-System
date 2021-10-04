@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Customer_Validation">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="227.0" style="-fx-background-color: #4f83cc;">
+         <children>
+            <JFXTextArea editable="false" layoutX="36.0" layoutY="154.0" prefHeight="92.0" prefWidth="155.0" text="Uh Oh!  Database is picking up some problem in record generation">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextArea>
+            <ImageView fitHeight="67.0" fitWidth="92.0" layoutX="73.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-warning-64.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXTextArea editable="false" layoutX="269.0" layoutY="167.0" prefHeight="67.0" prefWidth="385.0" text="The ID you are trying to use has already been taken. Create the record with a new one">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton fx:id="cust_val_back" buttonType="RAISED" layoutX="384.0" layoutY="342.0" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #4f83cc;" text="Go Back" />
+   </children>
+</AnchorPane>
