@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -66,11 +67,48 @@ public class SignupController {
                 int mobile = Integer.parseInt(mobile_field.getText());
                 String username = username_field.getText();
                 String password = password_field.getText();
-                createuser(id, name, address, aadhaar, mobile, username, password);
-                backtohome();
+                staffCheck(id, name, address, aadhaar, mobile, username, password);
+                //createuser(id, name, address, aadhaar, mobile, username, password);
+                //backtohome();
             }
         });
+    }
 
+    public void staffCheck(int id, String name, String address, int aadhaar, int mobile, String username, String password){
+        DBhandler = new DB_Handler();
+        try {
+            connection = DBhandler.getDbConnection();
+        } catch (ClassNotFoundException e1) {
+            e1.printStackTrace();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        String query = "SELECT * FROM gym_staff WHERE ID = ?";
+        try {
+            PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+            st.setInt(1,id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+            {
+                signup_btn.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/sample/view/staff_check.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Parent root_1 = loader.getRoot();
+                Stage stage_1 = new Stage();
+                stage_1.setScene(new Scene(root_1));
+                stage_1.showAndWait();
+            }
+            else{
+                createuser(id, name, address, aadhaar, mobile, username, password);
+            }
+        } catch (SQLException e2) {
+            e2.printStackTrace();
+        }
     }
 
     public void createuser(int id, String name, String address, int aadhaar, int mobile, String username, String password){
@@ -97,6 +135,7 @@ public class SignupController {
             preparedstatement.setString(6,username);
             preparedstatement.setString(7,password);
             preparedstatement.executeUpdate();
+            backtohome();
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
