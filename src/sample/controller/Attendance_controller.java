@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.database.DB_Handler;
@@ -50,6 +51,12 @@ public class Attendance_controller {
     @FXML
     private JFXButton present_btn;
 
+    @FXML
+    private TextField id_check_field;
+
+    @FXML
+    private Label warning_label;
+
     static private DB_Handler DBhandler;
     static private Connection connection;
     static private PreparedStatement preparedstatement;
@@ -60,7 +67,7 @@ public class Attendance_controller {
             @Override
             public void handle(ActionEvent event) {
                 String name = name_txtField.getText();
-                search_name(name);
+                name_validation(name);
             }
         });
 
@@ -69,7 +76,8 @@ public class Attendance_controller {
             public void handle(ActionEvent event) {
                 String name = name_txtField.getText();
                 String date = date_picker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                present(name,date);
+                    int id = Integer.parseInt(id_check_field.getText());
+                    present(name,date, id);
             }
         });
 
@@ -78,7 +86,8 @@ public class Attendance_controller {
             public void handle(ActionEvent event) {
                 String name = name_txtField.getText();
                 String date = date_picker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                absent(name,date);
+                int id = Integer.parseInt(id_check_field.getText());
+                absent(name,date, id);
             }
         });
 
@@ -108,7 +117,7 @@ public class Attendance_controller {
         });
     }
 
-    public void search_name(String name) {
+    public void name_validation(String name){
         DBhandler = new DB_Handler();
         try {
             connection = DBhandler.getDbConnection();
@@ -119,11 +128,49 @@ public class Attendance_controller {
         }
         String query = "SELECT * FROM gym_customer WHERE Cust_Name = ?";
         try {
-            PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+            PreparedStatement st= (PreparedStatement) connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.setString(1,name);
+            ResultSet rs = st.executeQuery();
+            rs.last();
+            int rowCount = rs.getRow();
+            if(rowCount > 1) {
+                warning_label.setVisible(true);
+                id_check_field.setEditable(true);
+                if (id_check_field.getText() == "") {
+                    System.out.println("Enter ID");
+                }
+                else {
+                    int validation_id = Integer.parseInt(id_check_field.getText());
+                    search_id(validation_id);
+                }
+            }
+            else {
+                warning_label.setVisible(true);
+                warning_label.setText("Enter ID");
+                id_check_field.setEditable(true);
+                if (id_check_field.getText() == "") {
+                    System.out.println("Enter ID");
+                }
+                else {
+                    int val_id = Integer.parseInt(id_check_field.getText());
+                    search_id(val_id);
+                }
+            }
+        } catch (SQLException e2) {
+
+            e2.printStackTrace();
+        }
+    }
+
+    public void search_id(int validation_id) {
+        String query = "SELECT * FROM gym_customer WHERE Cust_ID = ?";
+        try {
+            PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+            st.setInt(1,validation_id);
             ResultSet rs = st.executeQuery();
             if(rs.next())
             {
+                warning_label.setText("");
                 date_picker.setVisible(true);
                 absent_btn.setVisible(true);
                 present_btn.setVisible(true);
@@ -134,7 +181,7 @@ public class Attendance_controller {
         }
     }
 
-    public void present(String Name, String date) {
+    public void present(String Name, String date, int id) {
         DBhandler = new DB_Handler();
         try {
             connection = DBhandler.getDbConnection();
@@ -143,23 +190,24 @@ public class Attendance_controller {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        String insert  = "INSERT INTO gym_attendance(Name,Date,Attendance)"+ "VALUES(?,?,?)";
+        String insert  = "INSERT INTO gym_attendance(ID,Name,Date,Attendance)"+ "VALUES(?,?,?,?)";
         try {
             preparedstatement = (PreparedStatement) connection.prepareStatement(insert);
         } catch (SQLException e2) {
             e2.printStackTrace();
         }
         try {
-            preparedstatement.setString(1,Name);
-            preparedstatement.setString(2,date);
-            preparedstatement.setInt(3,1);
+            preparedstatement.setInt(1,id);
+            preparedstatement.setString(2,Name);
+            preparedstatement.setString(3,date);
+            preparedstatement.setInt(4,1);
             preparedstatement.executeUpdate();
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
     }
 
-    public void absent(String Name, String date) {
+    public void absent(String Name, String date, int id) {
         DBhandler = new DB_Handler();
         try {
             connection = DBhandler.getDbConnection();
@@ -168,16 +216,17 @@ public class Attendance_controller {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        String insert  = "INSERT INTO gym_attendance(Name,Date,Attendance)"+ "VALUES(?,?,?)";
+        String insert  = "INSERT INTO gym_attendance(ID,Name,Date,Attendance)"+ "VALUES(?,?,?,?)";
         try {
             preparedstatement = (PreparedStatement) connection.prepareStatement(insert);
         } catch (SQLException e2) {
             e2.printStackTrace();
         }
         try {
-            preparedstatement.setString(1,Name);
-            preparedstatement.setString(2,date);
-            preparedstatement.setInt(3,0);
+            preparedstatement.setInt(1,id);
+            preparedstatement.setString(2,Name);
+            preparedstatement.setString(3,date);
+            preparedstatement.setInt(4,0);
             preparedstatement.executeUpdate();
         } catch (SQLException e1) {
             e1.printStackTrace();

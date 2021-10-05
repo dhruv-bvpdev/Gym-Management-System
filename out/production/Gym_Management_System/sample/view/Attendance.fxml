@@ -3,12 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Attendance_controller">
    <children>
@@ -29,10 +29,12 @@
       <JFXButton fx:id="check_btn" buttonType="RAISED" layoutX="554.0" layoutY="357.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #4f83cc;" text="Check Attendance" />
       <JFXButton fx:id="back_btn" buttonType="RAISED" layoutX="247.0" layoutY="357.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #4f83cc;" text="Go Back" />
       <AnchorPane layoutX="227.0" layoutY="133.0" prefHeight="18.0" prefWidth="473.0" style="-fx-background-color: #4f83cc;" />
-      <TextField fx:id="name_txtField" alignment="CENTER" layoutX="247.0" layoutY="22.0" prefHeight="25.0" prefWidth="431.0" promptText="Enter Name" />
+      <TextField fx:id="name_txtField" alignment="CENTER" layoutX="234.0" layoutY="22.0" prefHeight="25.0" prefWidth="213.0" promptText="Enter Name" />
       <JFXButton fx:id="search_button" buttonType="RAISED" layoutX="397.0" layoutY="84.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #4f83cc;" text="Search Name" />
       <DatePicker fx:id="date_picker" layoutX="248.0" layoutY="175.0" prefHeight="25.0" prefWidth="431.0" visible="false" />
       <JFXButton fx:id="absent_btn" buttonType="RAISED" layoutX="284.0" layoutY="252.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #4f83cc;" text="Absent" visible="false" />
       <JFXButton fx:id="present_btn" buttonType="RAISED" layoutX="529.0" layoutY="252.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #4f83cc;" text="Present" visible="false" />
+      <TextField fx:id="id_check_field" alignment="CENTER" editable="false" layoutX="466.0" layoutY="22.0" prefHeight="25.0" prefWidth="213.0" promptText="Enter ID" />
+      <Label fx:id="warning_label" layoutX="277.0" layoutY="60.0" prefHeight="17.0" prefWidth="378.0" text="There are more than one person with the same name enter ID carefully" textFill="#e41313" visible="false" />
    </children>
 </AnchorPane>

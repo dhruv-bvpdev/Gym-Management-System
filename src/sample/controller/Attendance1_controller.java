@@ -57,8 +57,8 @@ public class Attendance1_controller {
         search_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String name = search_textField.getText();
-                search(name);
+                int id = Integer.parseInt(search_textField.getText());
+                search(id);
             }
         });
 
@@ -70,7 +70,7 @@ public class Attendance1_controller {
         });
     }
 
-    public void search(String name) {
+    public void search(int id) {
         DBhandler = new DB_Handler();
         try {
             connection = DBhandler.getDbConnection();
@@ -80,10 +80,10 @@ public class Attendance1_controller {
             e1.printStackTrace();
         }
         data = FXCollections.observableArrayList();
-        String SQL = "SELECT * FROM gym_attendance WHERE Name = ?";
+        String SQL = "SELECT * FROM gym_attendance WHERE ID = ?";
         try{
             PreparedStatement st= (PreparedStatement) connection.prepareStatement(SQL);
-            st.setString(1,name);
+            st.setInt(1,id);
             ResultSet rs = st.executeQuery();
 
             for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
