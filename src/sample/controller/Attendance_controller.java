@@ -135,6 +135,7 @@ public class Attendance_controller {
             int rowCount = rs.getRow();
             if(rowCount > 1) {
                 warning_label.setVisible(true);
+                search_button.setText("Proceed");
                 id_check_field.setEditable(true);
                 if (id_check_field.getText() == "") {
                     System.out.println("Enter ID");
@@ -147,6 +148,7 @@ public class Attendance_controller {
             else {
                 warning_label.setVisible(true);
                 warning_label.setText("Enter ID");
+                search_button.setText("Proceed");
                 id_check_field.setEditable(true);
                 if (id_check_field.getText() == "") {
                     System.out.println("Enter ID");
