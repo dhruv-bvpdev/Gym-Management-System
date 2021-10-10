@@ -146,17 +146,10 @@ public class Attendance_controller {
                 }
             }
             else {
-                warning_label.setVisible(true);
-                warning_label.setText("Enter ID");
-                search_button.setText("Proceed");
-                id_check_field.setEditable(true);
-                if (id_check_field.getText() == "") {
-                    System.out.println("Enter ID");
-                }
-                else {
-                    int val_id = Integer.parseInt(id_check_field.getText());
-                    search_id(val_id);
-                }
+                id_check_field.setText(rs.getString("Cust_ID"));
+                date_picker.setVisible(true);
+                absent_btn.setVisible(true);
+                present_btn.setVisible(true);
             }
         } catch (SQLException e2) {
 
