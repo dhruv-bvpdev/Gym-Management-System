@@ -1,6 +1,8 @@
 package sample.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -57,6 +59,48 @@ public class SignupController {
 
     @FXML
     void initialize() {
+        id_field.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if (t1) {
+                    System.out.println("Enter Id");
+                }
+                else {
+                    int id = Integer.parseInt(id_field.getText());
+                    DBhandler = new DB_Handler();
+                    try {
+                        connection = DBhandler.getDbConnection();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
+                    String query = "SELECT * FROM gym_staff WHERE ID = ?";
+                    try {
+                        PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+                        st.setInt(1,id);
+                        ResultSet rs = st.executeQuery();
+                        if(rs.next())
+                        {
+                            signup_btn.getScene().getWindow().hide();
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("/sample/view/staff_check.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Parent root_1 = loader.getRoot();
+                            Stage stage_1 = new Stage();
+                            stage_1.setScene(new Scene(root_1));
+                            stage_1.showAndWait();
+                        }
+                    } catch (SQLException e2) {
+                        e2.printStackTrace();
+                    }
+                }
+            }
+        });
         signup_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -67,49 +111,49 @@ public class SignupController {
                 int mobile = Integer.parseInt(mobile_field.getText());
                 String username = username_field.getText();
                 String password = password_field.getText();
-                staffCheck(id, name, address, aadhaar, mobile, username, password);
-                //createuser(id, name, address, aadhaar, mobile, username, password);
-                //backtohome();
+                //staffCheck(id, name, address, aadhaar, mobile, username, password);
+                createuser(id, name, address, aadhaar, mobile, username, password);
+                backtohome();
             }
         });
     }
 
-    public void staffCheck(int id, String name, String address, int aadhaar, int mobile, String username, String password){
-        DBhandler = new DB_Handler();
-        try {
-            connection = DBhandler.getDbConnection();
-        } catch (ClassNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
-        String query = "SELECT * FROM gym_staff WHERE ID = ?";
-        try {
-            PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
-            st.setInt(1,id);
-            ResultSet rs = st.executeQuery();
-            if(rs.next())
-            {
-                signup_btn.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/view/staff_check.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Parent root_1 = loader.getRoot();
-                Stage stage_1 = new Stage();
-                stage_1.setScene(new Scene(root_1));
-                stage_1.showAndWait();
-            }
-            else{
-                createuser(id, name, address, aadhaar, mobile, username, password);
-            }
-        } catch (SQLException e2) {
-            e2.printStackTrace();
-        }
-    }
+    //public void staffCheck(int id, String name, String address, int aadhaar, int mobile, String username, String password){
+      //  DBhandler = new DB_Handler();
+        //try {
+          //  connection = DBhandler.getDbConnection();
+        //} catch (ClassNotFoundException e1) {
+          //  e1.printStackTrace();
+        //} catch (SQLException e1) {
+          //  e1.printStackTrace();
+        //}
+        //String query = "SELECT * FROM gym_staff WHERE ID = ?";
+        //try {
+          //  PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+            //st.setInt(1,id);
+            //ResultSet rs = st.executeQuery();
+            //if(rs.next())
+           // {
+             //   signup_btn.getScene().getWindow().hide();
+               // FXMLLoader loader = new FXMLLoader();
+               // loader.setLocation(getClass().getResource("/sample/view/staff_check.fxml"));
+               // try {
+                 //   loader.load();
+               // } catch (IOException e) {
+                 //   e.printStackTrace();
+                //}
+                //Parent root_1 = loader.getRoot();
+                //Stage stage_1 = new Stage();
+                //stage_1.setScene(new Scene(root_1));
+                //stage_1.showAndWait();
+            //}
+            //else{
+              //  createuser(id, name, address, aadhaar, mobile, username, password);
+            //}
+        //} catch (SQLException e2) {
+          //  e2.printStackTrace();
+        //}
+    //}
 
     public void createuser(int id, String name, String address, int aadhaar, int mobile, String username, String password){
         DBhandler = new DB_Handler();
@@ -135,7 +179,6 @@ public class SignupController {
             preparedstatement.setString(6,username);
             preparedstatement.setString(7,password);
             preparedstatement.executeUpdate();
-            backtohome();
         } catch (SQLException e1) {
             e1.printStackTrace();
         }

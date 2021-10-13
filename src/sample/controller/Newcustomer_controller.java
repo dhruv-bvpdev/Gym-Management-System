@@ -1,6 +1,8 @@
 package sample.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -49,6 +51,48 @@ public class Newcustomer_controller {
 
     @FXML
     void initialize() {
+        id_field.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if (t1) {
+                    System.out.println("Enter Id");
+                }
+                else {
+                    int id = Integer.parseInt(id_field.getText());
+                    DBhandler = new DB_Handler();
+                    try {
+                        connection = DBhandler.getDbConnection();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
+                    String query = "SELECT * FROM gym_customer WHERE Cust_ID = ?";
+                    try {
+                        PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+                        st.setInt(1,id);
+                        ResultSet rs = st.executeQuery();
+                        if(rs.next())
+                        {
+                            add_button.getScene().getWindow().hide();
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("/sample/view/customer_check.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Parent root_1 = loader.getRoot();
+                            Stage stage_1 = new Stage();
+                            stage_1.setScene(new Scene(root_1));
+                            stage_1.showAndWait();
+                        }
+                    } catch (SQLException e2) {
+                        e2.printStackTrace();
+                    }
+                }
+            }
+        });
         add_button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -56,52 +100,52 @@ public class Newcustomer_controller {
                 String name = name_field.getText();
                 String address = address_field.getText();
                 int phone = Integer.parseInt(phone_field.getText());
-                customerCheck(id, name, address, phone);
-                //addnewcustomer(id,name,address,phone);
-                //backtohome();
+                //customerCheck(id, name, address, phone);
+                addnewcustomer(id,name,address,phone);
+                backtohome();
             }
         });
     }
 
-    public void customerCheck(int id, String name, String address, int phone) {
-        DBhandler = new DB_Handler();
-        try {
-            connection = DBhandler.getDbConnection();
-        } catch (ClassNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
-        String query = "SELECT * FROM gym_customer WHERE Cust_ID = ?";
-        try {
-            PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
-            st.setInt(1,id);
-            ResultSet rs = st.executeQuery();
-            if(rs.next())
-            {
-                add_button.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/view/customer_check.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Parent root_1 = loader.getRoot();
-                Stage stage_1 = new Stage();
-                stage_1.setScene(new Scene(root_1));
-                stage_1.showAndWait();
-            }
-            else{
+    //public void customerCheck(int id, String name, String address, int phone) {
+      //  DBhandler = new DB_Handler();
+        //try {
+          //  connection = DBhandler.getDbConnection();
+        //} catch (ClassNotFoundException e1) {
+            //e1.printStackTrace();
+        //} catch (SQLException e1) {
+          //  e1.printStackTrace();
+        //}
+        //String query = "SELECT * FROM gym_customer WHERE Cust_ID = ?";
+        //try {
+            //PreparedStatement st= (PreparedStatement) connection.prepareStatement(query);
+            //st.setInt(1,id);
+            //ResultSet rs = st.executeQuery();
+            //if(rs.next())
+           // {
+             //   add_button.getScene().getWindow().hide();
+               // FXMLLoader loader = new FXMLLoader();
+                //loader.setLocation(getClass().getResource("/sample/view/customer_check.fxml"));
+                //try {
+                  //  loader.load();
+                //} catch (IOException e) {
+                  //  e.printStackTrace();
+                //}
+                //Parent root_1 = loader.getRoot();
+                //Stage stage_1 = new Stage();
+                //stage_1.setScene(new Scene(root_1));
+                //stage_1.showAndWait();
+            //}
+            //else{
                 //String name = name_field.getText();
                 //String address = address_field.getText();
                 //int phone = Integer.parseInt(phone_field.getText());
-                addnewcustomer(id, name, address, phone);
-            }
-        } catch (SQLException e2) {
-            e2.printStackTrace();
-        }
-    }
+                //addnewcustomer(id, name, address, phone);
+            //}
+        //} catch (SQLException e2) {
+        //    e2.printStackTrace();
+        //}
+    //}
 
     public void addnewcustomer(int id, String name, String address, int phone){
         String insert  = "INSERT INTO gym_customer(Cust_ID,Cust_Name,Cust_Address,Cust_Phone)"+ "VALUES(?,?,?,?)";
@@ -116,7 +160,6 @@ public class Newcustomer_controller {
             preparedstatement.setString(3,address);
             preparedstatement.setInt(4,phone);
             preparedstatement.executeUpdate();
-            backtohome();
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
