@@ -1,0 +1,51 @@
+1.
+CREATE TABLE gym_attendance (
+    ID int,
+    Name varchar(45),
+    Date varchar(45),
+    Attendance int
+);
+
+2.
+CREATE TABLE gym_bills (
+    Name varchar(25),
+    amount int,
+    Pay_date datetime,
+);
+
+3.
+CREATE TABLE gym_customer (
+    Cust_ID int,
+    Cust_Name varchar(45),
+    Cust_Address varchar(45),
+    Cust_Phone int
+);
+
+4.
+CREATE TABLE gym_inventory (
+    Serial_Number int,
+    Name varchar(15),
+    Quantity int,
+);
+
+5.
+CREATE TABLE gym_staff (
+    ID int,
+    Name varchar(15),
+    Address varchar(30),
+    Aadhaar int,
+    Phone_Number int,
+    User_name varchar(10),
+    Password varchar(10)
+);
+
+6.
+INSERT INTO gym_staff(ID, Name, Address, Aadhaar, Phone_Number, User_name, Password) VALUES(1, 'Ajay', 'PSV', 123456, 999999, 'ajay', ajay123);
+
+
+
+
+
+
+
+
